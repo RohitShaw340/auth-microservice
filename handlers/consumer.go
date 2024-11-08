@@ -14,51 +14,51 @@ type AuthServiceServer struct {
 	pb.UnimplementedAuthServiceServer
 }
 
-// GenerateConsumerID generates a unique consumer ID for a new consumer.
-func (s *AuthServiceServer) GenerateConsumerID(ctx context.Context, req *pb.GenerateConsumerRequest) (*pb.GenerateConsumerResponse, error) {
-	collection := db.GetConsumersCollection()
-	consumer := map[string]interface{}{
+// GenerateClientID generates a unique client ID for a new client.
+func (s *AuthServiceServer) GenerateClientID(ctx context.Context, req *pb.GenerateClientRequest) (*pb.GenerateClientResponse, error) {
+	collection := db.GetClientsCollection()
+	client := map[string]interface{}{
 		"name":              req.Name,
 		"phone":             req.Phone,
 		"email":             req.Email,
 		"user_schema":       req.Schema,
 		"primary_key_field": req.PrimaryKeyField,
 	}
-	res, err := collection.InsertOne(ctx, consumer)
+	res, err := collection.InsertOne(ctx, client)
 	if err != nil {
-		return nil, fmt.Errorf("failed to insert consumer: %w", err)
+		return nil, fmt.Errorf("failed to insert client: %w", err)
 	}
 
 	// Convert the MongoDB ObjectID to a string
-	consumerID := res.InsertedID.(primitive.ObjectID).Hex()
+	clientID := res.InsertedID.(primitive.ObjectID).Hex()
 
-	err = db.CreateUserTable(consumerID, req.Schema)
+	err = db.CreateUserTable(clientID, req.Schema)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create user table: %w", err)
 	}
-	return &pb.GenerateConsumerResponse{ConsumerId: consumerID, Message: "Consumer ID generated successfully"}, nil
+	return &pb.GenerateClientResponse{ClientId: clientID, Message: "Client ID generated successfully"}, nil
 }
 
-// GetConsumerID retrieves the consumer ID using the provided email.
-func (s *AuthServiceServer) GetConsumerID(ctx context.Context, req *pb.GetConsumerRequest) (*pb.GetConsumerResponse, error) {
-	collection := db.GetConsumersCollection()
+// GetClientID retrieves the client ID using the provided email.
+func (s *AuthServiceServer) GetClientID(ctx context.Context, req *pb.GetClientRequest) (*pb.GetClientResponse, error) {
+	collection := db.GetClientsCollection()
 
 	// Search for the document by email
 	filter := bson.M{"email": req.Email}
-	var consumer bson.M
-	err := collection.FindOne(ctx, filter).Decode(&consumer)
+	var client bson.M
+	err := collection.FindOne(ctx, filter).Decode(&client)
 	if err != nil {
-		return nil, fmt.Errorf("failed to find consumer: %w", err)
+		return nil, fmt.Errorf("failed to find client: %w", err)
 	}
 
-	// Extract the consumer ID
-	consumerID, ok := consumer["_id"].(primitive.ObjectID)
+	// Extract the client ID
+	clientID, ok := client["_id"].(primitive.ObjectID)
 	if !ok {
-		return nil, fmt.Errorf("invalid consumer ID format")
+		return nil, fmt.Errorf("invalid client ID format")
 	}
 
-	return &pb.GetConsumerResponse{
-		ConsumerId: consumerID.Hex(),
-		Message:    "Consumer ID retrieved successfully",
+	return &pb.GetClientResponse{
+		ClientId: clientID.Hex(),
+		Message:  "Client ID retrieved successfully",
 	}, nil
 }

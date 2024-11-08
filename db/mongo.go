@@ -20,6 +20,6 @@ func ConnectMongoDB(uri string) error {
 	return nil
 }
 
-func GetConsumersCollection() *mongo.Collection {
-	return MongoClient.Database("consumers").Collection("consumers")
+func GetClientsCollection() *mongo.Collection {
+	return MongoClient.Database("clients").Collection("clients")
 }

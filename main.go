@@ -24,7 +24,7 @@ func main() {
 	}
 
 	// MySQL Connection
-	if err := db.ConnectMySQL(os.Getenv("SQL_TEST_DSN")); err != nil {
+	if err := db.ConnectMySQL(os.Getenv("MYSQL_TEST_DSN")); err != nil {
 		log.Fatalf("MySQL connection failed: %v", err)
 	}
 

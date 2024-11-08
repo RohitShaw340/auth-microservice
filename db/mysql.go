@@ -18,9 +18,9 @@ func ConnectMySQL(dsn string) error {
 	return nil
 }
 
-func CreateUserTable(consumerID string, schema map[string]string) error {
-	// Create a new MySQL database for this consumer
-	dbName := fmt.Sprintf("consumer_%s", consumerID)
+func CreateUserTable(clientID string, schema map[string]string) error {
+	// Create a new MySQL database for this client
+	dbName := fmt.Sprintf("client_%s", clientID)
 	_, err := MySQLClient.Exec(fmt.Sprintf("CREATE DATABASE IF NOT EXISTS %s", dbName))
 	if err != nil {
 		return fmt.Errorf("failed to create database: %w", err)

@@ -19,8 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthService_GenerateConsumerID_FullMethodName = "/auth.AuthService/GenerateConsumerID"
-	AuthService_GetConsumerID_FullMethodName      = "/auth.AuthService/GetConsumerID"
+	AuthService_GenerateClientID_FullMethodName = "/auth.AuthService/GenerateClientID"
+	AuthService_GetClientID_FullMethodName      = "/auth.AuthService/GetClientID"
 	AuthService_Login_FullMethodName              = "/auth.AuthService/Login"
 	AuthService_Signup_FullMethodName             = "/auth.AuthService/Signup"
 )
@@ -29,8 +29,8 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthServiceClient interface {
-	GenerateConsumerID(ctx context.Context, in *GenerateConsumerRequest, opts ...grpc.CallOption) (*GenerateConsumerResponse, error)
-	GetConsumerID(ctx context.Context, in *GetConsumerRequest, opts ...grpc.CallOption) (*GetConsumerResponse, error)
+	GenerateClientID(ctx context.Context, in *GenerateClientRequest, opts ...grpc.CallOption) (*GenerateClientResponse, error)
+	GetClientID(ctx context.Context, in *GetClientRequest, opts ...grpc.CallOption) (*GetClientResponse, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	Signup(ctx context.Context, in *SignupRequest, opts ...grpc.CallOption) (*SignupResponse, error)
 }
@@ -43,20 +43,20 @@ func NewAuthServiceClient(cc grpc.ClientConnInterface) AuthServiceClient {
 	return &authServiceClient{cc}
 }
 
-func (c *authServiceClient) GenerateConsumerID(ctx context.Context, in *GenerateConsumerRequest, opts ...grpc.CallOption) (*GenerateConsumerResponse, error) {
+func (c *authServiceClient) GenerateClientID(ctx context.Context, in *GenerateClientRequest, opts ...grpc.CallOption) (*GenerateClientResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GenerateConsumerResponse)
-	err := c.cc.Invoke(ctx, AuthService_GenerateConsumerID_FullMethodName, in, out, cOpts...)
+	out := new(GenerateClientResponse)
+	err := c.cc.Invoke(ctx, AuthService_GenerateClientID_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *authServiceClient) GetConsumerID(ctx context.Context, in *GetConsumerRequest, opts ...grpc.CallOption) (*GetConsumerResponse, error) {
+func (c *authServiceClient) GetClientID(ctx context.Context, in *GetClientRequest, opts ...grpc.CallOption) (*GetClientResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetConsumerResponse)
-	err := c.cc.Invoke(ctx, AuthService_GetConsumerID_FullMethodName, in, out, cOpts...)
+	out := new(GetClientResponse)
+	err := c.cc.Invoke(ctx, AuthService_GetClientID_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,8 +87,8 @@ func (c *authServiceClient) Signup(ctx context.Context, in *SignupRequest, opts 
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility.
 type AuthServiceServer interface {
-	GenerateConsumerID(context.Context, *GenerateConsumerRequest) (*GenerateConsumerResponse, error)
-	GetConsumerID(context.Context, *GetConsumerRequest) (*GetConsumerResponse, error)
+	GenerateClientID(context.Context, *GenerateClientRequest) (*GenerateClientResponse, error)
+	GetClientID(context.Context, *GetClientRequest) (*GetClientResponse, error)
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	Signup(context.Context, *SignupRequest) (*SignupResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
@@ -101,11 +101,11 @@ type AuthServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAuthServiceServer struct{}
 
-func (UnimplementedAuthServiceServer) GenerateConsumerID(context.Context, *GenerateConsumerRequest) (*GenerateConsumerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GenerateConsumerID not implemented")
+func (UnimplementedAuthServiceServer) GenerateClientID(context.Context, *GenerateClientRequest) (*GenerateClientResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GenerateClientID not implemented")
 }
-func (UnimplementedAuthServiceServer) GetConsumerID(context.Context, *GetConsumerRequest) (*GetConsumerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetConsumerID not implemented")
+func (UnimplementedAuthServiceServer) GetClientID(context.Context, *GetClientRequest) (*GetClientResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetClientID not implemented")
 }
 func (UnimplementedAuthServiceServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
@@ -134,38 +134,38 @@ func RegisterAuthServiceServer(s grpc.ServiceRegistrar, srv AuthServiceServer) {
 	s.RegisterService(&AuthService_ServiceDesc, srv)
 }
 
-func _AuthService_GenerateConsumerID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GenerateConsumerRequest)
+func _AuthService_GenerateClientID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GenerateClientRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServiceServer).GenerateConsumerID(ctx, in)
+		return srv.(AuthServiceServer).GenerateClientID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AuthService_GenerateConsumerID_FullMethodName,
+		FullMethod: AuthService_GenerateClientID_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).GenerateConsumerID(ctx, req.(*GenerateConsumerRequest))
+		return srv.(AuthServiceServer).GenerateClientID(ctx, req.(*GenerateClientRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthService_GetConsumerID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetConsumerRequest)
+func _AuthService_GetClientID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetClientRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServiceServer).GetConsumerID(ctx, in)
+		return srv.(AuthServiceServer).GetClientID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AuthService_GetConsumerID_FullMethodName,
+		FullMethod: AuthService_GetClientID_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).GetConsumerID(ctx, req.(*GetConsumerRequest))
+		return srv.(AuthServiceServer).GetClientID(ctx, req.(*GetClientRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -214,12 +214,12 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*AuthServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GenerateConsumerID",
-			Handler:    _AuthService_GenerateConsumerID_Handler,
+			MethodName: "GenerateClientID",
+			Handler:    _AuthService_GenerateClientID_Handler,
 		},
 		{
-			MethodName: "GetConsumerID",
-			Handler:    _AuthService_GetConsumerID_Handler,
+			MethodName: "GetClientID",
+			Handler:    _AuthService_GetClientID_Handler,
 		},
 		{
 			MethodName: "Login",

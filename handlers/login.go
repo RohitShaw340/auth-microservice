@@ -11,7 +11,7 @@ import (
 
 func (s *AuthServiceServer) Login(ctx context.Context, req *pb.LoginRequest) (*pb.LoginResponse, error) {
 	// Construct the database and table name
-	dbName := fmt.Sprintf("consumer_%s", req.ConsumerId)
+	dbName := fmt.Sprintf("client_%s", req.ClientId)
 	tableName := "users"
 	query := fmt.Sprintf("SELECT * FROM %s.%s WHERE %s = ? AND password = ?", dbName, tableName, req.PrimaryKeyField)
 

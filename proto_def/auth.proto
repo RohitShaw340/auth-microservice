@@ -4,13 +4,13 @@ package auth;
 option go_package = "auth-service/proto";
 
 service AuthService {
-    rpc GenerateConsumerID (GenerateConsumerRequest) returns (GenerateConsumerResponse);
-    rpc GetConsumerID (GetConsumerRequest) returns (GetConsumerResponse);
+    rpc GenerateClientID (GenerateClientRequest) returns (GenerateClientResponse);
+    rpc GetClientID (GetClientRequest) returns (GetClientResponse);
     rpc Login (LoginRequest) returns (LoginResponse);
     rpc Signup (SignupRequest) returns (SignupResponse);
 }
 
-message GenerateConsumerRequest {
+message GenerateClientRequest {
     string name = 1;
     string phone = 2;
     string email = 3;
@@ -18,22 +18,22 @@ message GenerateConsumerRequest {
     string primary_key_field = 5;
 }
 
-message GenerateConsumerResponse {
-    string consumer_id = 1;
+message GenerateClientResponse {
+    string client_id = 1;
     string message = 2;
 }
 
-message GetConsumerRequest {
+message GetClientRequest {
     string email = 1;
 }
 
-message GetConsumerResponse {
-    string consumer_id = 1;
+message GetClientResponse {
+    string client_id = 1;
     string message = 2;
 }
 
 message LoginRequest {
-    string consumer_id = 1;
+    string client_id = 1;
     string primary_key_field = 2;
     string primary_key_value = 3;
     string password = 4;
@@ -45,7 +45,7 @@ message LoginResponse {
 }
 
 message SignupRequest {
-    string consumer_id = 1;
+    string client_id = 1;
     map<string, string> user_data = 2;
     string primary_key_field = 3;
 }

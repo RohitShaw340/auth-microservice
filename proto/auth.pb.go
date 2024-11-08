@@ -20,7 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type GenerateConsumerRequest struct {
+type GenerateClientRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -32,20 +32,20 @@ type GenerateConsumerRequest struct {
 	PrimaryKeyField string            `protobuf:"bytes,5,opt,name=primary_key_field,json=primaryKeyField,proto3" json:"primary_key_field,omitempty"`
 }
 
-func (x *GenerateConsumerRequest) Reset() {
-	*x = GenerateConsumerRequest{}
+func (x *GenerateClientRequest) Reset() {
+	*x = GenerateClientRequest{}
 	mi := &file_proto_auth_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GenerateConsumerRequest) String() string {
+func (x *GenerateClientRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GenerateConsumerRequest) ProtoMessage() {}
+func (*GenerateClientRequest) ProtoMessage() {}
 
-func (x *GenerateConsumerRequest) ProtoReflect() protoreflect.Message {
+func (x *GenerateClientRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_auth_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -57,69 +57,69 @@ func (x *GenerateConsumerRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GenerateConsumerRequest.ProtoReflect.Descriptor instead.
-func (*GenerateConsumerRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GenerateClientRequest.ProtoReflect.Descriptor instead.
+func (*GenerateClientRequest) Descriptor() ([]byte, []int) {
 	return file_proto_auth_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GenerateConsumerRequest) GetName() string {
+func (x *GenerateClientRequest) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-func (x *GenerateConsumerRequest) GetPhone() string {
+func (x *GenerateClientRequest) GetPhone() string {
 	if x != nil {
 		return x.Phone
 	}
 	return ""
 }
 
-func (x *GenerateConsumerRequest) GetEmail() string {
+func (x *GenerateClientRequest) GetEmail() string {
 	if x != nil {
 		return x.Email
 	}
 	return ""
 }
 
-func (x *GenerateConsumerRequest) GetSchema() map[string]string {
+func (x *GenerateClientRequest) GetSchema() map[string]string {
 	if x != nil {
 		return x.Schema
 	}
 	return nil
 }
 
-func (x *GenerateConsumerRequest) GetPrimaryKeyField() string {
+func (x *GenerateClientRequest) GetPrimaryKeyField() string {
 	if x != nil {
 		return x.PrimaryKeyField
 	}
 	return ""
 }
 
-type GenerateConsumerResponse struct {
+type GenerateClientResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ConsumerId string `protobuf:"bytes,1,opt,name=consumer_id,json=consumerId,proto3" json:"consumer_id,omitempty"`
+	ClientId string `protobuf:"bytes,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 	Message    string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 }
 
-func (x *GenerateConsumerResponse) Reset() {
-	*x = GenerateConsumerResponse{}
+func (x *GenerateClientResponse) Reset() {
+	*x = GenerateClientResponse{}
 	mi := &file_proto_auth_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GenerateConsumerResponse) String() string {
+func (x *GenerateClientResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GenerateConsumerResponse) ProtoMessage() {}
+func (*GenerateClientResponse) ProtoMessage() {}
 
-func (x *GenerateConsumerResponse) ProtoReflect() protoreflect.Message {
+func (x *GenerateClientResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_auth_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -131,26 +131,26 @@ func (x *GenerateConsumerResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GenerateConsumerResponse.ProtoReflect.Descriptor instead.
-func (*GenerateConsumerResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GenerateClientResponse.ProtoReflect.Descriptor instead.
+func (*GenerateClientResponse) Descriptor() ([]byte, []int) {
 	return file_proto_auth_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GenerateConsumerResponse) GetConsumerId() string {
+func (x *GenerateClientResponse) GetClientId() string {
 	if x != nil {
-		return x.ConsumerId
+		return x.ClientId
 	}
 	return ""
 }
 
-func (x *GenerateConsumerResponse) GetMessage() string {
+func (x *GenerateClientResponse) GetMessage() string {
 	if x != nil {
 		return x.Message
 	}
 	return ""
 }
 
-type GetConsumerRequest struct {
+type GetClientRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -158,20 +158,20 @@ type GetConsumerRequest struct {
 	Email string `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 }
 
-func (x *GetConsumerRequest) Reset() {
-	*x = GetConsumerRequest{}
+func (x *GetClientRequest) Reset() {
+	*x = GetClientRequest{}
 	mi := &file_proto_auth_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetConsumerRequest) String() string {
+func (x *GetClientRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetConsumerRequest) ProtoMessage() {}
+func (*GetClientRequest) ProtoMessage() {}
 
-func (x *GetConsumerRequest) ProtoReflect() protoreflect.Message {
+func (x *GetClientRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_auth_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -183,41 +183,41 @@ func (x *GetConsumerRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetConsumerRequest.ProtoReflect.Descriptor instead.
-func (*GetConsumerRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetClientRequest.ProtoReflect.Descriptor instead.
+func (*GetClientRequest) Descriptor() ([]byte, []int) {
 	return file_proto_auth_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *GetConsumerRequest) GetEmail() string {
+func (x *GetClientRequest) GetEmail() string {
 	if x != nil {
 		return x.Email
 	}
 	return ""
 }
 
-type GetConsumerResponse struct {
+type GetClientResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ConsumerId string `protobuf:"bytes,1,opt,name=consumer_id,json=consumerId,proto3" json:"consumer_id,omitempty"`
+	ClientId string `protobuf:"bytes,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 	Message    string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 }
 
-func (x *GetConsumerResponse) Reset() {
-	*x = GetConsumerResponse{}
+func (x *GetClientResponse) Reset() {
+	*x = GetClientResponse{}
 	mi := &file_proto_auth_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetConsumerResponse) String() string {
+func (x *GetClientResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetConsumerResponse) ProtoMessage() {}
+func (*GetClientResponse) ProtoMessage() {}
 
-func (x *GetConsumerResponse) ProtoReflect() protoreflect.Message {
+func (x *GetClientResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_auth_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -229,19 +229,19 @@ func (x *GetConsumerResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetConsumerResponse.ProtoReflect.Descriptor instead.
-func (*GetConsumerResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetClientResponse.ProtoReflect.Descriptor instead.
+func (*GetClientResponse) Descriptor() ([]byte, []int) {
 	return file_proto_auth_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetConsumerResponse) GetConsumerId() string {
+func (x *GetClientResponse) GetClientId() string {
 	if x != nil {
-		return x.ConsumerId
+		return x.ClientId
 	}
 	return ""
 }
 
-func (x *GetConsumerResponse) GetMessage() string {
+func (x *GetClientResponse) GetMessage() string {
 	if x != nil {
 		return x.Message
 	}
@@ -253,7 +253,7 @@ type LoginRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ConsumerId      string `protobuf:"bytes,1,opt,name=consumer_id,json=consumerId,proto3" json:"consumer_id,omitempty"`
+	ClientId      string `protobuf:"bytes,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 	PrimaryKeyField string `protobuf:"bytes,2,opt,name=primary_key_field,json=primaryKeyField,proto3" json:"primary_key_field,omitempty"`
 	PrimaryKeyValue string `protobuf:"bytes,3,opt,name=primary_key_value,json=primaryKeyValue,proto3" json:"primary_key_value,omitempty"`
 	Password        string `protobuf:"bytes,4,opt,name=password,proto3" json:"password,omitempty"`
@@ -289,9 +289,9 @@ func (*LoginRequest) Descriptor() ([]byte, []int) {
 	return file_proto_auth_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *LoginRequest) GetConsumerId() string {
+func (x *LoginRequest) GetClientId() string {
 	if x != nil {
-		return x.ConsumerId
+		return x.ClientId
 	}
 	return ""
 }
@@ -375,7 +375,7 @@ type SignupRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ConsumerId      string            `protobuf:"bytes,1,opt,name=consumer_id,json=consumerId,proto3" json:"consumer_id,omitempty"`
+	ClientId      string            `protobuf:"bytes,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 	UserData        map[string]string `protobuf:"bytes,2,rep,name=user_data,json=userData,proto3" json:"user_data,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	PrimaryKeyField string            `protobuf:"bytes,3,opt,name=primary_key_field,json=primaryKeyField,proto3" json:"primary_key_field,omitempty"`
 }
@@ -410,9 +410,9 @@ func (*SignupRequest) Descriptor() ([]byte, []int) {
 	return file_proto_auth_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *SignupRequest) GetConsumerId() string {
+func (x *SignupRequest) GetClientId() string {
 	if x != nil {
-		return x.ConsumerId
+		return x.ClientId
 	}
 	return ""
 }
@@ -584,28 +584,28 @@ func file_proto_auth_proto_rawDescGZIP() []byte {
 
 var file_proto_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_proto_auth_proto_goTypes = []any{
-	(*GenerateConsumerRequest)(nil),  // 0: auth.GenerateConsumerRequest
-	(*GenerateConsumerResponse)(nil), // 1: auth.GenerateConsumerResponse
-	(*GetConsumerRequest)(nil),       // 2: auth.GetConsumerRequest
-	(*GetConsumerResponse)(nil),      // 3: auth.GetConsumerResponse
+	(*GenerateClientRequest)(nil),  // 0: auth.GenerateClientRequest
+	(*GenerateClientResponse)(nil), // 1: auth.GenerateClientResponse
+	(*GetClientRequest)(nil),       // 2: auth.GetClientRequest
+	(*GetClientResponse)(nil),      // 3: auth.GetClientResponse
 	(*LoginRequest)(nil),             // 4: auth.LoginRequest
 	(*LoginResponse)(nil),            // 5: auth.LoginResponse
 	(*SignupRequest)(nil),            // 6: auth.SignupRequest
 	(*SignupResponse)(nil),           // 7: auth.SignupResponse
-	nil,                              // 8: auth.GenerateConsumerRequest.SchemaEntry
+	nil,                              // 8: auth.GenerateClientRequest.SchemaEntry
 	nil,                              // 9: auth.LoginResponse.UserDetailsEntry
 	nil,                              // 10: auth.SignupRequest.UserDataEntry
 }
 var file_proto_auth_proto_depIdxs = []int32{
-	8,  // 0: auth.GenerateConsumerRequest.schema:type_name -> auth.GenerateConsumerRequest.SchemaEntry
+	8,  // 0: auth.GenerateClientRequest.schema:type_name -> auth.GenerateClientRequest.SchemaEntry
 	9,  // 1: auth.LoginResponse.user_details:type_name -> auth.LoginResponse.UserDetailsEntry
 	10, // 2: auth.SignupRequest.user_data:type_name -> auth.SignupRequest.UserDataEntry
-	0,  // 3: auth.AuthService.GenerateConsumerID:input_type -> auth.GenerateConsumerRequest
-	2,  // 4: auth.AuthService.GetConsumerID:input_type -> auth.GetConsumerRequest
+	0,  // 3: auth.AuthService.GenerateClientID:input_type -> auth.GenerateClientRequest
+	2,  // 4: auth.AuthService.GetClientID:input_type -> auth.GetClientRequest
 	4,  // 5: auth.AuthService.Login:input_type -> auth.LoginRequest
 	6,  // 6: auth.AuthService.Signup:input_type -> auth.SignupRequest
-	1,  // 7: auth.AuthService.GenerateConsumerID:output_type -> auth.GenerateConsumerResponse
-	3,  // 8: auth.AuthService.GetConsumerID:output_type -> auth.GetConsumerResponse
+	1,  // 7: auth.AuthService.GenerateClientID:output_type -> auth.GenerateClientResponse
+	3,  // 8: auth.AuthService.GetClientID:output_type -> auth.GetClientResponse
 	5,  // 9: auth.AuthService.Login:output_type -> auth.LoginResponse
 	7,  // 10: auth.AuthService.Signup:output_type -> auth.SignupResponse
 	7,  // [7:11] is the sub-list for method output_type

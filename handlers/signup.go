@@ -9,7 +9,7 @@ import (
 )
 
 func (s *AuthServiceServer) Signup(ctx context.Context, req *pb.SignupRequest) (*pb.SignupResponse, error) {
-	dbName := fmt.Sprintf("consumer_%s", req.ConsumerId)
+	dbName := fmt.Sprintf("client_%s", req.ClientId)
 	tableName := "users"
 
 	fields := ""

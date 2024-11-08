@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package auth;
+option go_package = "auth-service/proto";
+
+service AuthService {
+    rpc GenerateConsumerID (GenerateConsumerRequest) returns (GenerateConsumerResponse);
+    rpc GetConsumerID (GetConsumerRequest) returns (GetConsumerResponse);
+    rpc Login (LoginRequest) returns (LoginResponse);
+    rpc Signup (SignupRequest) returns (SignupResponse);
+}
+
+message GenerateConsumerRequest {
+    string name = 1;
+    string phone = 2;
+    string email = 3;
+    map<string, string> schema = 4;  // schema for user details
+    string primary_key_field = 5;
+}
+
+message GenerateConsumerResponse {
+    string consumer_id = 1;
+    string message = 2;
+}
+
+message GetConsumerRequest {
+    string email = 1;
+}
+
+message GetConsumerResponse {
+    string consumer_id = 1;
+    string message = 2;
+}
+
+message LoginRequest {
+    string consumer_id = 1;
+    string primary_key_field = 2;
+    string primary_key_value = 3;
+    string password = 4;
+}
+
+message LoginResponse {
+    string message = 1;
+    map<string, string> user_details = 2;
+}
+
+message SignupRequest {
+    string consumer_id = 1;
+    map<string, string> user_data = 2;
+    string primary_key_field = 3;
+}
+
+message SignupResponse {
+    string message = 1;
+}

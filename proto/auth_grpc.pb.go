@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v5.27.1
-// source: proto/auth.proto
+// source: proto_def/auth.proto
 
 package proto
 
@@ -21,8 +21,8 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	AuthService_GenerateClientID_FullMethodName = "/auth.AuthService/GenerateClientID"
 	AuthService_GetClientID_FullMethodName      = "/auth.AuthService/GetClientID"
-	AuthService_Login_FullMethodName              = "/auth.AuthService/Login"
-	AuthService_Signup_FullMethodName             = "/auth.AuthService/Signup"
+	AuthService_Login_FullMethodName            = "/auth.AuthService/Login"
+	AuthService_Signup_FullMethodName           = "/auth.AuthService/Signup"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -231,5 +231,5 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/auth.proto",
+	Metadata: "proto_def/auth.proto",
 }
